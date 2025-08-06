@@ -18,12 +18,12 @@ public class DetailClientFinancialProductServiceImpl implements DetailClientFina
 
     public DetailClientFinancialProductDTO listDetail(String uniqueCode) {
         DetailClientDTO clientDTO = webClient.get()
-                .uri("http://localhost:8080/api/client/{uniqueCode}", uniqueCode)
+                .uri("http://microservice-bank:8080/api/client/{uniqueCode}", uniqueCode)
                 .headers(headers -> headers.setBasicAuth("admin", "admin$2025"))
                 .retrieve().bodyToMono(DetailClientDTO.class).block();
 
         DetailFinancialProductDTO[] productDTO = webClient.get()
-                .uri("http://localhost:8080/api/financialProduct/{uniqueCode}", uniqueCode)
+                .uri("http://microservice-bank:8080/api/financialProduct/{uniqueCode}", uniqueCode)
                 .headers(headers -> headers.setBasicAuth("admin", "admin$2025"))
                 .retrieve().bodyToMono(DetailFinancialProductDTO[].class).block();
 

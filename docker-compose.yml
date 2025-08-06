@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  bff-bank:
+    build: .
+    ports:
+      - "8082:8080"
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: bank-service
+    driver: bridge
